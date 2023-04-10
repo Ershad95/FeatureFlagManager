@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using Newtonsoft.Json;
 
 namespace FeatureFlag.Core
@@ -27,9 +28,17 @@ namespace FeatureFlag.Core
             if (featureFagItem == null)
                 throw new InvalidDataException();
             
-            return featureFagItem.Enabled;
+            if(!featureFagItem.Enabled)
+                return false;
+            
+            return CustomAttributeValidation(featureFagItem);
         }
-        
+
+        protected virtual bool CustomAttributeValidation<TInput>(TInput input) where TInput: FeatureFagItem
+        {
+            return true;
+        }
+
         public FeatureFagItem GetFeatureFlagInfoWithName(string nameOfFeature)
         {
             if (string.IsNullOrEmpty(nameOfFeature))
