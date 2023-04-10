@@ -12,10 +12,9 @@ namespace FeatureFlag.Core
     {
         private readonly List<FeatureFagItem> _featureFagItems;
 
-        public FeatureFlagManager(string path)
+        public FeatureFlagManager(string path,IJsonConvertor jsonConvertor)
         {
-            var jsonContent = File.ReadAllText(path);
-            _featureFagItems = JsonConvert.DeserializeObject<List<FeatureFagItem>>(jsonContent);
+            _featureFagItems = jsonConvertor.GetFeatureFagItems(path);
         }
 
         public bool IsActiveFeatureWithName(string nameOfFeature)
@@ -47,6 +46,20 @@ namespace FeatureFlag.Core
                 throw new InvalidDataException();
 
             return featureFlag;
+        }
+    }
+
+    public interface IJsonConvertor
+    {
+        List<FeatureFagItem> GetFeatureFagItems(string path);
+    }
+
+    public class JsonConvertor : IJsonConvertor
+    {
+        public List<FeatureFagItem> GetFeatureFagItems(string path)
+        {
+            var jsonContent = File.ReadAllText(path);
+           return JsonConvert.DeserializeObject<List<FeatureFagItem>>(jsonContent);
         }
     }
 

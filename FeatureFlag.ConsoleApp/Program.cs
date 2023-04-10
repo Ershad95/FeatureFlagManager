@@ -6,7 +6,7 @@ Console.WriteLine("Start Test of Features");
 
 
 const string pathOfFeatureJsonfile = "featureFlag.json";
-var featureFlagManager = new CustomFeatureFlagManager(pathOfFeatureJsonfile);
+var featureFlagManager = new CustomFeatureFlagManager(pathOfFeatureJsonfile,new JsonConvertor());
 
 var payAndGoIsEnabled = featureFlagManager.IsActiveFeatureWithName("PayAndGo");
 var rentalIsEnabled =   featureFlagManager.IsActiveFeatureWithName("Rental");

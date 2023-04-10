@@ -4,7 +4,7 @@ namespace FeatureFlag.Core
 {
     public class CustomFeatureFlagManager : FeatureFlagManager
     {
-        public CustomFeatureFlagManager(string path) : base(path)
+        public CustomFeatureFlagManager(string path,IJsonConvertor jsonConvertor) : base(path,jsonConvertor)
         {
         }
 
