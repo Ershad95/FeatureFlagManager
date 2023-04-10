@@ -7,4 +7,14 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FeatureFlag.Core\FeatureFlag.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="featureFlag.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
