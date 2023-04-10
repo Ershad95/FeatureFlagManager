@@ -1,0 +1,5 @@
+[
+  {"name":"PayAndGo","enabled":true,"description":"Payment way"},
+  {"name":"Rental","enabled":true,"description":"Rental way"},
+  {"name":"Shipping","enabled":true,"description":"Shipping way"}
+]
