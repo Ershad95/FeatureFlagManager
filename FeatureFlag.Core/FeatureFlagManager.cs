@@ -31,7 +31,7 @@ namespace FeatureFlag.Core
             return featureFagItem.Enabled && CustomAttributeValidation(featureFagItem);
         }
         
-        protected virtual bool CustomAttributeValidation<TInput>(TInput input) where TInput: FeatureFagItem
+        protected virtual bool CustomAttributeValidation(FeatureFagItem input)
         {
             return true;
         }

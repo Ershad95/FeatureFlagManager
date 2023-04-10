@@ -6,10 +6,10 @@ Console.WriteLine("Start Test of Features");
 
 
 const string pathOfFeatureJsonfile = "featureFlag.json";
-var featureFlagManager = new FeatureFlagManager(pathOfFeatureJsonfile);
+var featureFlagManager = new CustomFeatureFlagManager(pathOfFeatureJsonfile);
 
 var payAndGoIsEnabled = featureFlagManager.IsActiveFeatureWithName("PayAndGo");
-var rentalIsEnabled = featureFlagManager.IsActiveFeatureWithName("Rental");
+var rentalIsEnabled =   featureFlagManager.IsActiveFeatureWithName("Rental");
 var shippingIsEnabled = featureFlagManager.IsActiveFeatureWithName("Shipping");
 
 Console.WriteLine(payAndGoIsEnabled ? "PayAndGo Is Enabled" : "PayAndGo Is Disabled");
