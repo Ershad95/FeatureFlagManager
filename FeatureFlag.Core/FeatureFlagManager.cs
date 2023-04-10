@@ -28,12 +28,9 @@ namespace FeatureFlag.Core
             if (featureFagItem == null)
                 throw new InvalidDataException();
             
-            if(!featureFagItem.Enabled)
-                return false;
-            
-            return CustomAttributeValidation(featureFagItem);
+            return featureFagItem.Enabled && CustomAttributeValidation(featureFagItem);
         }
-
+        
         protected virtual bool CustomAttributeValidation<TInput>(TInput input) where TInput: FeatureFagItem
         {
             return true;
