@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace FeatureFlag.Core
 {
-    public class FeatureFlagManager
+    public class FeatureFlagManager : IFeatureFlagManager
     {
         private readonly List<FeatureFagItem> _featureFagItems;
 
@@ -48,5 +48,11 @@ namespace FeatureFlag.Core
 
             return featureFlag;
         }
+    }
+
+    public interface IFeatureFlagManager
+    {
+        bool IsActiveFeatureWithName(string nameOfFeature);
+        FeatureFagItem GetFeatureFlagInfoWithName(string nameOfFeature);
     }
 }
