@@ -1,0 +1,33 @@
+# .github/workflows/unit-tests.yml
+
+name: Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest  # You can choose the operating system that fits your needs
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Set up .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0  # You can specify the .NET Core SDK version that your project requires
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build project
+      run: dotnet build --configuration Release
+
+    - name: Run unit tests
+      run: dotnet test --configuration Release --no-build --filter FullyQualifiedName~FeatureFlag.Core
